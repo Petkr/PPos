@@ -1,6 +1,5 @@
 #include "print.hpp"
 
-#include <array>
 #include <cstdint>
 
 #include "PP/size_t.hpp"
@@ -73,7 +72,7 @@ void print_char(char character)
 	if (col > NUM_COLS)
 		print_newline();
 
-	buffer[col + NUM_COLS * row] = Char{(uint8_t)character, f};
+	buffer[col + NUM_COLS * row] = {character, f};
 
 	col++;
 }
