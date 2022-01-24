@@ -19,11 +19,6 @@ public:
 	font(color foreground, color background) noexcept;
 };
 
-class console
-{
-public:
-};
-
 void print_clear();
 void print_char(char character);
 void print_str(const char* string);

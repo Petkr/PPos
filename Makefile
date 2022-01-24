@@ -11,11 +11,11 @@ x86_64_object_files := $(x86_64_cpp_object_files) $(x86_64_asm_object_files)
 
 $(kernel_object_files): build/kernel/%.o : src/impl/kernel/%.cpp
 	mkdir -p $(dir $@) && \
-	gcc-10 -std=c++20 -c -I PP -I src/intf -ffreestanding $(patsubst build/kernel/%.o, src/impl/kernel/%.cpp, $@) -o $@
+	gcc -std=c++20 -c -I PP -I src/intf -fstack-protector -ffreestanding $(patsubst build/kernel/%.o, src/impl/kernel/%.cpp, $@) -o $@
 
 $(x86_64_cpp_object_files): build/x86_64/%.o : src/impl/x86_64/%.cpp
 	mkdir -p $(dir $@) && \
-	gcc-10 -std=c++20 -c -I PP -I src/intf -ffreestanding $(patsubst build/x86_64/%.o, src/impl/x86_64/%.cpp, $@) -o $@
+	gcc -std=c++20 -c -I PP -I src/intf -fstack-protector -ffreestanding $(patsubst build/x86_64/%.o, src/impl/x86_64/%.cpp, $@) -o $@
 
 $(x86_64_asm_object_files): build/x86_64/%.o : src/impl/x86_64/%.asm
 	mkdir -p $(dir $@) && \
